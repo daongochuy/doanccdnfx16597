@@ -260,7 +260,7 @@ go
  create table OrderDetail
  (
   OrderID int not null,
-  lotteryID int not null,
+  lotteryID bigint not null,
   Price decimal(18,0),
   PromotionPrice decimal(18,0),
   quantity int,
@@ -277,8 +277,8 @@ go
  add constraint pk_lottery primary key(ID)
  go
  --tạo khóa chính cho Loại bài viết 
- alter table Categoty 
- add constraint pk_Categoty  primary key(ID)
+ alter table Category 
+ add constraint pk_Category  primary key(ID)
  go
  --tạo khóa chính cho bài viết 
  alter table Content
@@ -366,7 +366,7 @@ ON DELETE CASCADE
 GO
 --Tạo khóa ngoại cho bảng content(bài viết)
 ALTER TABLE Content
-CONSTRAINT fk_ContentCategory FOREIGN KEY(Category)
+ADD CONSTRAINT fk_ContentCategory FOREIGN KEY(Category)
 REFERENCES Category (ID)
 ON UPDATE CASCADE
 ON DELETE CASCADE
@@ -425,4 +425,59 @@ REFERENCES lottery(ID)
 ON UPDATE CASCADE
 ON DELETE CASCADE
 GO
+/* Insert data*/
+--Thêm Loại Vé 
+insert into lotterytype values
+('MBLOT',N'Xổ Số Miền Bắc','','Xo-So-Mien-Bac',N'Xổ Số Miền Bắc',N'Xổ Số Miền Bắc',N'Xổ Số Miền Bắc',1,1),
+('MNLOT',N'Xổ Số Miền Nam','','Xo-So-Mien-Nam',N'Xổ Số Miền Nam',N'Xổ Số Miền Nam',N'Xổ Số Miền Nam',1,1),
+('MTLOT',N'Xổ Số Miền Trung','','Xo-So-Mien-Trung',N'Xổ Số Miền Trung',N'Xổ Số Miền Trung',N'Xổ Số Miền Trung',1,1),
+('VIETLOT',N'Xổ Số VIETLOT','','Xo-So-VIETLOT',N'Xổ Số VIETLOT',N'Xổ Số VIETLOT',N'Xổ Số VIETLOT',1,1),
+('MBLOTBN',N'Vé Số Bắc Ninh','MBLOT','Ve-So-Bac-Ninh',N'Vé Số Bắc Ninh',N'Vé Số Bắc Ninh',N'Vé Số Bắc Ninh',1,1),
+('MBLOTHN',N'Vé Số Hà Nội','MBLOT','Ve-So-Ha-Noi',N'Vé Số Hà Nội',N'Vé Số Hà Nội',N'Vé Số Hà Nội',1,1),
+('MBLOTHP',N'Vé Số Hải Phòng','MBLOT','Ve-So-Hai-Phong',N'Vé Số Hải Phòng',N'Vé Số Hải Phòng',N'Vé Số Hải Phòng',1,1),
+('MBLOTND',N'Vé Số Nam Định','MBLOT','Ve-So-Nam-Dinh',N'Vé Số Nam Định',N'Vé Số Nam Định',N'Vé Số Nam Định',1,1),
+('MBLOTQN',N'Vé Số Quảng Ninh','MBLOT','Ve-So-Quang-Ninh',N'Vé Số Quảng Ninh',N'Vé Số Quảng Ninh',N'Vé Số Quảng Ninh',1,1),
+('MBLOTTB',N'Vé Số Thái Bình','MBLOT','Ve-So-Thai-Binh',N'Vé Số Thái Bình',N'Vé Số Thái Bình',N'Vé Số Thái Bình',1,1),
+('MNLOTAG',N'Vé Số An Giang','MNLOT','Ve-So-An-Giang',N'Vé Số An Giang',N'Vé Số An Giang',N'Vé Số An Giang',1,1),
+('MNLOTBL',N'Vé Số Bạc Liêu','MNLOT','Ve-So-Bac-Lieu',N'Vé Số Bạc Liêu',N'Vé Số Bạc Liêu',N'Vé Số Bạc Liêu',1,1),
+('MNLOTBT',N'Vé Số Bến Tre','MNLOT','Ve-So-Ben-Tre',N'Vé Số Bến Tre',N'Vé Số Bến Tre',N'Vé Số Bến Tre',1,1),
+('MNLOTBD',N'Vé Số Bình Dương ','MNLOT','Ve-So-Binh-Duong',N'Vé Số Bình Dương',N'Vé Số Bình Dương',N'Vé Số Bình Dương',1,1),
+('MNLOTBP',N'Vé Số Bình Phước','MNLOT','Ve-So-Binh-Phuoc',N'Vé Số Bình Phước',N'Vé Số Bình Phước',N'Vé Số Bình Phước',1,1)
 
+go
+--Thêm dữ liệu cho bảng vé số
+insert into lottery values
+('MBLOT',064267,'MBLOT01.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/5','2022/10/15',50,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',125677,'MBLOT02.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/5','2022/10/15',50,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',671288,'MBLOT03.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/6','2022/10/15',60,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',125478,'MBLOT04.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/5','2022/10/15',50,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',986754,'MBLOT05.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/5','2022/10/15',50,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',893768,'MBLOT06.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/6','2022/10/15',60,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',576768,'MBLOT07.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/5','2022/10/15',50,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',920121,'MBLOT08.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/5','2022/10/15',50,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',346855,'MBLOT09.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/6','2022/10/15',60,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',678900,'MBLOT10.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/5','2022/10/15',50,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',078812,'MBLOT11.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/5','2022/10/15',50,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',667728,'MBLOT12.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/6','2022/10/15',60,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',102078,'MBLOT13.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/5','2022/10/15',50,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',127987,'MBLOT14.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/5','2022/10/15',50,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1),
+('MBLOT',675688,'MBLOT15.jpg','vé số miền bắc mở thưởng ngày ',10000,0,1,'2022/10/6','2022/10/15',60,'ve-so-mien-bac-ngay-',N'',N'',N'',0,1,1)
+go
+--Thêm dứ liệu cho bảng khách hàng
+insert into customer values
+(N'Đào Ngọc Huy',N'Cao An - Cẩm Giàng - Hải Dương','dnhuyhttt@gmail.com','0974863436','huydao123','123456',1),
+(N'Nguyễn Văn A',N'Hà Nội','mra@gmail.com','123456789','nguyena123','123456',1),
+(N'Nguyễn Văn B',N'Hà Nội','bnguyen@gmail.com','123456789','nguyenvana123','123456',1),
+(N'Trần Thị C',N'Hải Dương','ctran@gmail.com','233434342','ctranthi123','123456',1),
+(N'Lê Thị Vân',N'Hà Nội','levan68@gmail.com','123456789','levanthi123','123456',1),
+(N'Nguyễn Thị Hằng',N'Hải Phòng','hangnguyen@gmail.com','123456789','nguyenhang86','123456',1),
+(N'Lê Thị Hường',N'Cao An - Cẩm Giàng - Hải Dương','huongle@gmail.com','0974863436','lehuong123','123456',1),
+(N'Nguyên Thị Nhiên ',N'Hà Nội','nhiennguyen@gmail.com','123456789','nguyennhien5689','123456',1),
+(N'Nguyễn Văn Bình',N'Hà Nội','binhnguyen@gmail.com','123456789','nguyenbinh123','123456',1),
+(N'Nguyễn Thị Mận',N'Cao An - Cẩm Giàng - Hải Dương','mannguyen@gmail.com','0974812866','mannguyen87','123456',1),
+(N'Nguyễn Văn Anh',N'Hà Nội','mranh88@gmail.com','123456789','nguyenanh123','123456',1),
+(N'Nguyễn Văn Biên',N'Hà Tĩnh','biennguyen@gmail.com','123456789','nguyenbien123','123456',1),
+(N'Đào Quang Hùng',N'Cao An - Cẩm Giàng - Hải Dương','daohung123@gmail.com','123456789','hungdao123','123456',1),
+(N'Nguyễn Văn Điệp',N'Hải Phòng','diepnguyen@gmail.com','123456789','nguyendiep123','121243',1),
+(N'Nguyễn Văn Giáp',N'Hải Dương','giapnguyen@gmail.com','123456789','nguyenvangiap123','123123',1)
+go
